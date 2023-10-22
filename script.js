@@ -116,6 +116,10 @@ mainframe()
 let index = 0;
 
 document.addEventListener("keydown", function () {
+    while (index < text.length && text[index] === ' ') {
+        index++;
+    }
+    
     if (index < text.length) {
         output.textContent += text[index];
         index++;
