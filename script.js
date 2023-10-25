@@ -1,6 +1,5 @@
 const output = document.getElementById("output");
-const text = `
-import os
+const text = `import os
 import sys
 import time
 import h4ck
