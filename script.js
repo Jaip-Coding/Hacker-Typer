@@ -119,9 +119,17 @@ document.addEventListener("keydown", function () {
         output.textContent += text[index];
         index++;
     }
-    
+
     if (index < text.length) {
         output.textContent += text[index];
         index++;
+
+        // Überprüfe, ob das untere Ende erreicht wurde
+        const isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
+
+        // Scrolle nach oben, wenn das untere Ende erreicht wurde
+        if (isScrolledToBottom) {
+            output.scrollTop = output.scrollHeight;
+        }
     }
 });
