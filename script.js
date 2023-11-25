@@ -99,7 +99,7 @@ if h4ck.malware("Rough").server == h4ck.web_server:
 def bitcoin_check():
     if h4ck.user("self").exist:
         bitcoin_wallet = h4ck.user("self").bitcoin.address
-        tranaction = h4ck.bitcoin.transaction(bitcoin_wallet)
+        transaction = h4ck.bitcoin.transaction(bitcoin_wallet)
         if h4ck.positive(transaction):
             return bitcoin_wallet
 
