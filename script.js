@@ -1,4 +1,5 @@
 const output = document.getElementById("output");
+const terminal = document.getElementById("terminal");
 const text = `import os
 import sys
 import time
@@ -118,6 +119,9 @@ document.addEventListener("keydown", function () {
     while (text[index] === ' ' || text[index] === '\n') {
         output.textContent += text[index];
         index++;
+        if (output.scrollHeight >= terminal.height) {
+            output.scrollTop = output.scrollHeight - terminal.height;
+        }
     }
 
     if (index < text.length) {
