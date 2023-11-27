@@ -18,9 +18,9 @@ def mainframe():
             ransomware.device.delete_all()
             print("Deleted data...")
             print(f"Hacking completed in {time.time()}!")
-        while ransomware.tranaction:
+        while ransomware.transaction:
             print("Transfer in progress...")
-            if ransomware.tranaction.complete:
+            if ransomware.transaction.complete:
                 ransomware.destroy()
                 print(f"Hacking completed in {time.time()}!")
 
@@ -114,13 +114,14 @@ mainframe()
 `;
 
 let index = 0;
+let startHeight = terminal.scrollHeight
 
 document.addEventListener("keydown", function () {
     while (text[index] === ' ' || text[index] === '\n') {
         output.textContent += text[index];
         index++;
-        if (output.scrollHeight >= terminal.height) {
-            output.scrollTop = output.scrollHeight - terminal.height;
+        if (output.scrollHeight + 30 >= startHeight) {
+            terminal.scrollTop = output.scrollHeight - startHeight + 30;
         }
     }
 
