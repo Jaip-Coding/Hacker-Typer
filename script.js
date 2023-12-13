@@ -114,7 +114,7 @@ mainframe()
 `;
 
 let index = 0;
-let startHeight = terminal.scrollHeight
+let startHeight = terminal.scrollHeight;
 
 document.addEventListener("keydown", function () {
     while (text[index] === ' ' || text[index] === '\n') {
@@ -125,6 +125,10 @@ document.addEventListener("keydown", function () {
         }
     }
 
+    if (output.scrollHeight + 30 >= startHeight) {
+        terminal.scrollTop = output.scrollHeight - startHeight + 30;
+    }
+    
     if (index < text.length) {
         output.textContent += text[index];
         index++;
