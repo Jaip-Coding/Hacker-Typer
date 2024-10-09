@@ -14,15 +14,16 @@ def mainframe():
     if h4ck.malware("Rough").device == h4ck.pc:
         ransomware = h4ck.malware("Rough").ransomware
         start_time = time.time()
-        if time.time() >= start_time + 86400:
+        while not time.time() >= start_time + 86400:
+            while ransomware.transaction:
+                print("Transfer in progress...")
+                if ransomware.transaction.complete:
+                    ransomware.destroy()
+                    print(f"Hacking completed in {time.time()}!")
+        if not ransomware.transaction.complete:
             ransomware.device.delete_all()
             print("Deleted data...")
             print(f"Hacking completed in {time.time()}!")
-        while ransomware.transaction:
-            print("Transfer in progress...")
-            if ransomware.transaction.complete:
-                ransomware.destroy()
-                print(f"Hacking completed in {time.time()}!")
 
 print("Initializing hack...")
 
@@ -114,7 +115,7 @@ mainframe()
 `;
 
 let index = 0;
-let startHeight = terminal.scrollHeight;
+let startHeight = terminal.scrollHeight
 
 document.addEventListener("keydown", function () {
     while (text[index] === ' ' || text[index] === '\n') {
@@ -125,10 +126,6 @@ document.addEventListener("keydown", function () {
         }
     }
 
-    if (output.scrollHeight + 30 >= startHeight) {
-        terminal.scrollTop = output.scrollHeight - startHeight + 30;
-    }
-    
     if (index < text.length) {
         output.textContent += text[index];
         index++;
